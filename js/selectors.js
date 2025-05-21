@@ -4,6 +4,5 @@ export const listGroup = document.querySelector("#listGroup");
 export const listTotal = document.querySelector("#listTotal");
 export const doneListTotal = document.querySelector("#doneListTotal");
 export const listTemplate = document.querySelector("#listTemplate");
-
-
-
+export const checkAllBtn = document.querySelector("#checkAllBtn");
+export const delAllBtn = document.querySelector("#delAllBtn");

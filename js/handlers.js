@@ -1,4 +1,12 @@
-import { createList, deleteList, doneList, editList, updateListTotal } from "./lists.js";
+import {
+  createList,
+  deleteList,
+  doneList,
+  doneUpdateListTotal,
+  editList,
+  updateListTotal,
+} from "./lists.js";
+import { listGroup } from "./selectors.js";
 
 export const addListHandler = () => {
   addList(textInput.value);
@@ -36,4 +44,23 @@ export const listGroupHandler = (event) => {
   } else if (event.target.classList.contains("list-check")) {
     doneList(event.target.closest(".list").id);
   }
+};
+
+export const delAllLists = () => {
+  if (window.confirm("confirm delete all lists!")) {
+    const lists = listGroup.querySelectorAll(".list");
+    lists.forEach((el) => {
+      el.remove();
+    });
+    updateListTotal();
+    doneUpdateListTotal();
+  }
+};
+
+export const checkAllLists = () => {
+  const lists = listGroup.querySelectorAll(".list");
+  lists.forEach((el) => {
+    el.querySelector(".list-check").checked = true;
+    doneList(el.id);
+  });
 };
